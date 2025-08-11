@@ -345,12 +345,23 @@
 
             // Update active button
             buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            
+            // Find the clicked button and make it active
+            const clickedButton = Array.from(buttons).find(btn => {
+                const btnText = btn.textContent.trim();
+                const btnCategory = btn.getAttribute('onclick');
+                return btnCategory && btnCategory.includes(category);
+            });
+            
+            if (clickedButton) {
+                clickedButton.classList.add('active');
+            }
 
             // Show/hide sections
             sections.forEach(section => {
                 if (category === 'all' || section.getAttribute('data-category') === category) {
                     section.style.display = 'block';
+                    section.style.animation = 'fadeInUp 0.6s ease-out';
                 } else {
                     section.style.display = 'none';
                 }

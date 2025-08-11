@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منيو مطعم ميراتا - نظام الطلبات المتكامل</title>
-    <link rel="stylesheet" href="./style_improved.css">
+    <link rel="stylesheet" href="./style_new.css">
 </head>
 <body>
     <div class="container">
@@ -34,18 +34,30 @@
 
         <!-- Menu Categories -->
         <div class="menu-categories">
-            <button class="category-btn active" onclick="filterCategory(\'all\')">جميع الأصناف</button>
-            <button class="category-btn" onclick="filterCategory(\'الشوربات\')">الشوربات</button>
-            <button class="category-btn" onclick="filterCategory(\'المقبلات\')">المقبلات</button>
-            <button class="category-btn" onclick="filterCategory(\'البرياني الهندي\')">البرياني الهندي</button>
-            <button class="category-btn" onclick="filterCategory(\'مسالا دجاج\')">مسالا دجاج</button>
-            <button class="category-btn" onclick="filterCategory(\'مسالا خضروات\')">مسالا خضروات</button>
-            <button class="category-btn" onclick="filterCategory(\'مسالا لحم\')">مسالا لحم</button>
-            <button class="category-btn" onclick="filterCategory(\'مسالا بحريات\')">مسالا بحريات</button>
-            <button class="category-btn" onclick="filterCategory(\'مشويات التندوري\')">مشويات التندوري</button>
-            <button class="category-btn" onclick="filterCategory(\'المطبخ الصيني\')">المطبخ الصيني</button>
-            <button class="category-btn" onclick="filterCategory(\'خبز هندي\')">خبز هندي</button>
-            <button class="category-btn" onclick="filterCategory(\'عصيرات\')">عصيرات</button>
+            <button class="category-btn active" onclick="filterCategory('all')">
+                <img src="./icon_all.png" alt="جميع الأصناف" class="category-icon">
+                جميع الأصناف
+            </button>
+            <button class="category-btn" onclick="filterCategory('الشوربات')">
+                <img src="./icon_soup.png" alt="الشوربات" class="category-icon">
+                الشوربات
+            </button>
+            <button class="category-btn" onclick="filterCategory('المقبلات')">
+                <img src="./icon_appetizers.png" alt="المقبلات" class="category-icon">
+                المقبلات
+            </button>
+            <button class="category-btn" onclick="filterCategory('البرياني الهندي')">
+                <img src="./icon_biryani.png" alt="البرياني الهندي" class="category-icon">
+                البرياني الهندي
+            </button>
+            <button class="category-btn" onclick="filterCategory('المسالا دجاج')">
+                <img src="./icon_chicken.png" alt="المسالا دجاج" class="category-icon">
+                المسالا دجاج
+            </button>
+            <button class="category-btn" onclick="filterCategory('مسالا خضراوات')">
+                <img src="./icon_vegetables.png" alt="مسالا خضراوات" class="category-icon">
+                مسالا خضراوات
+            </button>
         </div>
 
         <!-- Menu Sections -->
@@ -112,5 +124,6 @@
 
 </body>
     <script src="./script.js"></script>
+    <script src="./payment_integration.js"></script>
 </html>
 
