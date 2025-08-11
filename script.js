@@ -106,7 +106,8 @@
                 { "arabic_name": "نودلز سنغافورة", "english_name": "Singapore noodles", "price_sar": 38 },
                 { "arabic_name": "نودلز الخضروات", "english_name": "Vegetable noodles", "price_sar": 34 },
                 { "arabic_name": "نودلز الدجاج", "english_name": "Chicken noodles", "price_sar": 38 },
-                { "arabic_name": "مومو (لحم - دجاج)", "english_name": "Momo (Meat - Chicken)", "price_sar": "23-25" },
+                { "arabic_name": "مومو لحم", "english_name": "Momo Meat", "price_sar": 25 },
+                { "arabic_name": "مومو دجاج", "english_name": "Momo Chicken", "price_sar": 23 },
                 { "arabic_name": "نودلز الروبيان", "english_name": "Prawn noodles", "price_sar": 45 },
                 { "arabic_name": "نودلز السمك", "english_name": "Fish noodles", "price_sar": 42 },
                 { "arabic_name": "دجاج ديناميت", "english_name": "Dynamit Chicken", "price_sar": 42 },
@@ -132,6 +133,7 @@
                 { "arabic_name": "مانجو", "english_name": "Mango", "price_sar": 14 },
                 { "arabic_name": "كوكتيل", "english_name": "Cocktail", "price_sar": 15 },
                 { "arabic_name": "كوكتيل طبقات", "english_name": "Cocktail Layers", "price_sar": 15 },
+                { "arabic_name": "كأس شراب سعودي", "english_name": "Saudi Drink Cup", "price_sar": 13 },
                 { "arabic_name": "شراب سعودي وسط", "english_name": "Saudi Drink Medium", "price_sar": 23 },
                 { "arabic_name": "شراب سعودي كبير", "english_name": "Saudi Drink Large", "price_sar": 35 },
                 { "arabic_name": "بيبسي", "english_name": "PEPSI", "price_sar": 3 },
@@ -410,7 +412,15 @@
                 cartTotal.style.display = 'none';
                 checkoutBtn.style.display = 'none';
             } else {
-                cartItems.innerHTML = cart.map(item => `
+                const clearAllBtn = `
+                    <div class="clear-all-container">
+                        <button class="clear-all-btn" onclick="clearAllCart()">
+                            ${translations[currentLang].clearAll || (currentLang === 'ar' ? 'حذف الكل' : 'Clear All')}
+                        </button>
+                    </div>
+                `;
+                
+                cartItems.innerHTML = clearAllBtn + cart.map(item => `
                     <div class="cart-item">
                         <div class="cart-item-info">
                             <div class="cart-item-name">${item.name}</div>
@@ -451,6 +461,19 @@
             cart = cart.filter(item => item.name !== name);
             localStorage.setItem('cart', JSON.stringify(cart));
             updateCartDisplay();
+        }
+
+        // Clear all cart items
+        function clearAllCart() {
+            const confirmMessage = currentLang === 'ar' ? 
+                'هل أنت متأكد من حذف جميع العناصر من السلة؟' : 
+                'Are you sure you want to clear all items from the cart?';
+            
+            if (confirm(confirmMessage)) {
+                cart = [];
+                localStorage.setItem('cart', JSON.stringify(cart));
+                updateCartDisplay();
+            }
         }
 
         // Toggle cart modal
