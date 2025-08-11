@@ -639,27 +639,27 @@ body::before {
 }
 
 .quantity-btn {
-    width: 35px;
-    height: 35px;
-    border: 2px solid var(--primary-color);
-    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    color: var(--primary-color);
-    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    border-radius: 5px;
     cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
     font-weight: bold;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 6px rgba(212, 175, 55, 0.2);
+    box-shadow: none;
 }
 
 .quantity-btn:hover {
-    background: var(--gradient-primary);
-    color: white;
-    transform: scale(1.1);
-    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: none;
+    box-shadow: none;
 }
 
 .quantity-display {
@@ -668,9 +668,10 @@ body::before {
     text-align: center;
     font-size: 1.2rem;
     color: var(--text-color);
-    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
-    border-radius: 8px;
-    padding: 5px 8px;
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 5px 10px;
+    border-radius: 5px;
 }
 
 .remove-item-btn {
@@ -1197,5 +1198,325 @@ body::before {
 
 .clear-all-btn:active {
     transform: translateY(0);
+}
+
+
+
+.category-btn .category-icon {
+    display: none;
+}
+
+.menu-categories {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust column width */
+    padding: 20px;
+}
+
+.category-btn {
+    display: block; /* Make button take full width */
+    text-align: center;
+    padding: 15px 10px; /* Adjust padding */
+    font-size: 1.1rem; /* Increase font size */
+    border-radius: 10px; /* Make it more like a banner */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+    background: var(--gradient-dark); /* Use a subtle background */
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.category-btn:hover,
+.category-btn.active {
+    background: var(--gradient-primary); /* Keep the banner color on hover/active */
+    color: white;
+    border-color: var(--primary-color);
+    transform: none; /* Remove transform on hover/active */
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
+}
+
+.category-btn::before {
+    display: none; /* Remove the hover effect that changes background */
+}
+
+.category-btn::after {
+    display: none; /* Remove the hover effect that changes background */
+}
+
+.category-btn span {
+    font-weight: 700;
+}
+
+/* Adjustments for quantity buttons */
+.quantity-display {
+    color: var(--text-color); /* Ensure text is visible */
+    background: none; /* Remove background gradient */
+    border: 1px solid var(--border-color); /* Add a subtle border */
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.quantity-btn {
+    border: 1px solid var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    font-size: 1.2rem;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    box-shadow: none;
+}
+
+.quantity-btn:hover {
+    background: var(--secondary-color);
+    border-color: var(--secondary-color);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Adjustments for payment section */
+.payment-method-btn {
+    background: var(--surface-color);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    box-shadow: var(--shadow-light);
+}
+
+.payment-method-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.payment-method-btn.active {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+}
+
+.cash-on-delivery-btn {
+    background: var(--gradient-primary);
+    color: white;
+    border: none;
+    box-shadow: var(--shadow-medium);
+}
+
+.cash-on-delivery-btn:hover {
+    background: var(--gradient-secondary);
+    box-shadow: var(--shadow-heavy);
+}
+
+.cash-on-delivery-btn:active {
+    transform: translateY(0);
+}
+
+
+
+/* Payment Modal Styles */
+.payment-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.payment-modal-content {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    border-radius: 25px;
+    padding: 30px;
+    max-width: 600px;
+    width: 90%;
+    max-height: 80vh;
+    overflow-y: auto;
+    position: relative;
+    animation: modalSlideIn 0.3s ease-out;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    border: 2px solid var(--primary-color);
+}
+
+.payment-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.payment-modal-header h3 {
+    font-family: 'Almarai', 'Tajawal', serif;
+    color: var(--primary-color);
+    margin: 0;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.close-payment-btn {
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+
+.close-payment-btn:hover {
+    color: var(--danger-color);
+}
+
+.payment-total {
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(212, 175, 55, 0.05) 100%);
+    border-radius: 15px;
+    border: 1px solid var(--primary-color);
+}
+
+.payment-total h4 {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+    margin: 0;
+    font-family: 'Almarai', 'Tajawal', serif;
+    font-weight: 700;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.payment-option {
+    padding: 20px;
+    border: 1px solid var(--border-color);
+    border-radius: 15px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 249, 250, 0.9) 100%);
+    transition: all 0.3s ease;
+}
+
+.payment-option:hover {
+    border-color: var(--primary-color);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+}
+
+.payment-option h4 {
+    color: var(--text-color);
+    margin: 0 0 10px 0;
+    font-family: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
+
+.payment-option p {
+    color: var(--text-light);
+    margin: 0 0 15px 0;
+    font-size: 0.95rem;
+}
+
+.payment-btn {
+    width: 100%;
+    padding: 15px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Tajawal', 'IBM Plex Sans Arabic', sans-serif;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.whatsapp-payment-btn {
+    background: #25D366;
+    color: white;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-payment-btn:hover {
+    background: #128C7E;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+.cash-payment-btn {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+.cash-payment-btn:hover {
+    background: var(--gradient-secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+}
+
+.card-payment-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.card-payment-btn {
+    padding: 10px;
+    font-size: 0.9rem;
+    background: var(--surface-color);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-payment-btn:hover {
+    background: var(--primary-color);
+    color: white;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+}
+
+.mada-btn:hover {
+    background: #007B4A;
+    border-color: #007B4A;
+}
+
+.visa-btn:hover {
+    background: #1E479B;
+    border-color: #1E479B;
+}
+
+.mastercard-btn:hover {
+    background: #EB001B;
+    border-color: #EB001B;
+}
+
+.applepay-btn:hover {
+    background: #000000;
+    border-color: #000000;
+}
+
+/* Mobile responsiveness for payment modal */
+@media (max-width: 768px) {
+    .payment-modal-content {
+        width: 95%;
+        padding: 20px;
+        max-height: 90vh;
+    }
+    
+    .card-payment-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .payment-btn {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
 }
 
