@@ -510,14 +510,14 @@
         }
 
         // Show success message
-        function showSuccessMessage() {
+        function showSuccessMessage(message) {
             const successMessage = document.getElementById('success-message');
-            successMessage.textContent = translations[currentLang].successMessage;
+            successMessage.textContent = message || translations[currentLang].successMessage;
             successMessage.classList.add('show');
             
             setTimeout(() => {
                 successMessage.classList.remove('show');
-            }, 3000);
+            }, 2000);
         }
 
         // Close cart when clicking outside
