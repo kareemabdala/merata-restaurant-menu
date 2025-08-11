@@ -149,7 +149,7 @@ function sendWhatsAppOrder() {
 
 // Handle cash on delivery
 function handleCashOnDelivery() {
-    const orderDetails = formatOrderForWhatsApp();
+    let orderDetails = formatOrderForWhatsApp();
     orderDetails += '\n\n💰 *طريقة الدفع:* الدفع عند الاستلام';
     
     const phoneNumber = paymentMethods.whatsapp.phoneNumber;
@@ -172,7 +172,7 @@ function handleCardPayment(cardType) {
         'applepay': 'آبل باي'
     };
     
-    const orderDetails = formatOrderForWhatsApp();
+    let orderDetails = formatOrderForWhatsApp();
     orderDetails += `\n\n💳 *طريقة الدفع المفضلة:* ${cardNames[cardType]}`;
     
     const phoneNumber = paymentMethods.whatsapp.phoneNumber;
