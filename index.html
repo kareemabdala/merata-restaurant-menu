@@ -4,32 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>منيو مطعم ميراتا - نظام الطلبات المتكامل</title>
-    <link rel="stylesheet" href="./style_new.css">
+    <link rel="stylesheet" href="./style_final.css">
 </head>
 <body>
     <div class="container">
         <!-- Header -->
         <div class="header">
+            <div class="hero-image">
+                <img src="./1000035939.jpg" alt="مطعم ميراتا" class="hero-bg">
+            </div>
             <img src="./merata_logo.png" alt="شعار مطعم ميراتا" class="logo">
             <h1>مطعم ميراتا</h1>
-            <p>تجربة طعام استثنائية مع أفضل الأطباق العربية والعالمية</p>
-            
-            <!-- QR Code Section -->
-            <div class="qr-code-section">
-                <div class="qr-code-container">
-                    <div class="qr-code">
-                        <img src="./merata_qr.png" alt="QR Code" style="width: 120px; height: 120px;">
-                    </div>
-                    <p class="qr-text">امسح الكود للطلب السريع</p>
-                </div>
-            </div>
+            <p>تجربة طعام استثنائية مع أفضل الأطباق الهندية الأصيلة</p>
         </div>
 
         <!-- Top Bar -->
         <div class="top-bar">
-            <div class="lang-switcher">
-                <button onclick="toggleLanguage()">English</button>
-            </div>
         </div>
 
         <!-- Menu Categories -->
@@ -50,13 +40,37 @@
                 <img src="./icon_biryani.png" alt="البرياني الهندي" class="category-icon">
                 البرياني الهندي
             </button>
-            <button class="category-btn" onclick="filterCategory('المسالا دجاج')">
-                <img src="./icon_chicken.png" alt="المسالا دجاج" class="category-icon">
-                المسالا دجاج
+            <button class="category-btn" onclick="filterCategory('مسالا دجاج')">
+                <img src="./icon_chicken.png" alt="مسالا دجاج" class="category-icon">
+                مسالا دجاج
             </button>
-            <button class="category-btn" onclick="filterCategory('مسالا خضراوات')">
-                <img src="./icon_vegetables.png" alt="مسالا خضراوات" class="category-icon">
-                مسالا خضراوات
+            <button class="category-btn" onclick="filterCategory('مسالا خضروات')">
+                <img src="./icon_vegetables.png" alt="مسالا خضروات" class="category-icon">
+                مسالا خضروات
+            </button>
+            <button class="category-btn" onclick="filterCategory('مسالا لحم')">
+                <img src="./icon_meat.png" alt="مسالا لحم" class="category-icon">
+                مسالا لحم
+            </button>
+            <button class="category-btn" onclick="filterCategory('مسالا بحريات')">
+                <img src="./icon_seafood.png" alt="مسالا بحريات" class="category-icon">
+                مسالا بحريات
+            </button>
+            <button class="category-btn" onclick="filterCategory('مشويات التندوري')">
+                <img src="./icon_tandoori.png" alt="مشويات التندوري" class="category-icon">
+                مشويات التندوري
+            </button>
+            <button class="category-btn" onclick="filterCategory('المطبخ الصيني')">
+                <img src="./icon_chinese.png" alt="المطبخ الصيني" class="category-icon">
+                المطبخ الصيني
+            </button>
+            <button class="category-btn" onclick="filterCategory('خبز هندي')">
+                <img src="./icon_bread.png" alt="خبز هندي" class="category-icon">
+                خبز هندي
+            </button>
+            <button class="category-btn" onclick="filterCategory('عصيرات')">
+                <img src="./icon_drinks.png" alt="عصيرات" class="category-icon">
+                عصيرات
             </button>
         </div>
 
@@ -124,6 +138,6 @@
 
 </body>
     <script src="./script.js"></script>
-    <script src="./payment_integration.js"></script>
+    <script src="./payment_integration_new.js"></script>
 </html>
 

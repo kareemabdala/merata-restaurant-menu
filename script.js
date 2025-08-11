@@ -132,7 +132,8 @@
                 { "arabic_name": "مانجو", "english_name": "Mango", "price_sar": 14 },
                 { "arabic_name": "كوكتيل", "english_name": "Cocktail", "price_sar": 15 },
                 { "arabic_name": "كوكتيل طبقات", "english_name": "Cocktail Layers", "price_sar": 15 },
-                { "arabic_name": "شراب سعودي", "english_name": "Saudi Drink", "price_sar": "23-35" },
+                { "arabic_name": "شراب سعودي وسط", "english_name": "Saudi Drink Medium", "price_sar": 23 },
+                { "arabic_name": "شراب سعودي كبير", "english_name": "Saudi Drink Large", "price_sar": 35 },
                 { "arabic_name": "بيبسي", "english_name": "PEPSI", "price_sar": 3 },
                 { "arabic_name": "سفن أب", "english_name": "Seven UP", "price_sar": 3 },
                 { "arabic_name": "حمضيات", "english_name": "Citrus", "price_sar": 3 },
@@ -285,16 +286,20 @@
                     menuItem.className = 'menu-item';
 
                     const itemName = currentLang === 'ar' ? item.arabic_name : item.english_name;
+                    const itemDescription = currentLang === 'ar' ? (item.description_ar || getItemDescription(item)) : (item.description_en || getItemDescription(item));
                     const t = translations[currentLang];
 
+                    const imageHtml = item.image ? `<div class="item-image"><img src="${item.image}" alt="${itemName}" /></div>` : '';
+
                     menuItem.innerHTML = `
+                        ${imageHtml}
                         <div class="item-content">
                             <div class="item-header">
                                 <h3>${itemName}</h3>
                                 <span class="item-price">${item.price_sar} ${t.sar}</span>
                             </div>
                             <div class="item-description">
-                                ${getItemDescription(item)}
+                                ${itemDescription}
                             </div>
                             <button class="add-to-cart-btn" onclick="addToCart('${itemName}', ${item.price_sar})">
                                 ${t.addToCart}
@@ -467,51 +472,8 @@
                 return;
             }
 
-            let orderDetails = "";
-            let total = 0;
-            cart.forEach(item => {
-                orderDetails += `${item.name} (${item.quantity} x ${item.price} ${translations[currentLang].sar}) - ${item.quantity * item.price} ${translations[currentLang].sar}\n`;
-                total += item.quantity * item.price;
-            });
-
-            const deliveryOption = document.querySelector("input[name=\"pickup-method\"]:checked");
-            const deliveryText = deliveryOption ? deliveryOption.nextElementSibling.textContent : (currentLang === 'ar' ? 'لم يتم تحديد خيار الاستلام' : 'No pickup method selected');
-            const notes = document.getElementById("order-notes").value;
-
-            let whatsappMessage = currentLang === 'ar' ? 
-                `*طلب جديد من مطعم ميراتا*\n\n` :
-                `*New Order from Merata Restaurant*\n\n`;
-            
-            whatsappMessage += currentLang === 'ar' ? 
-                `*تفاصيل الطلب:*\n${orderDetails}\n` :
-                `*Order Details:*\n${orderDetails}\n`;
-            
-            whatsappMessage += currentLang === 'ar' ? 
-                `*المجموع الكلي:* ${total} ريال\n` :
-                `*Total Amount:* ${total} SAR\n`;
-            
-            whatsappMessage += currentLang === 'ar' ? 
-                `*طريقة الاستلام:* ${deliveryText}\n` :
-                `*Pickup Method:* ${deliveryText}\n`;
-            
-            if (notes) {
-                whatsappMessage += currentLang === 'ar' ? 
-                    `*ملاحظات:* ${notes}\n` :
-                    `*Notes:* ${notes}\n`;
-            }
-            
-            whatsappMessage += currentLang === 'ar' ? 
-                `\nشكراً لطلبكم من مطعم ميراتا!` :
-                `\nThank you for ordering from Merata Restaurant!`;
-
-            const whatsappUrl = `https://wa.me/966508813919?text=${encodeURIComponent(whatsappMessage)}`;
-            window.open(whatsappUrl, "_blank");
-
-            // Clear cart after order
-            cart = [];
-            localStorage.removeItem("cart");
-            updateCartDisplay();
-            closeCart();
+            // Show payment options modal
+            showPaymentOptions();
         }
 
         // Open WhatsApp for inquiries
