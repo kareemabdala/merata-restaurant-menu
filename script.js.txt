@@ -1,0 +1,568 @@
+// »Ì«‰«  «·„‰ÌÊ
+const menuData = {
+    categories: [
+        { id: 1, name: "«·ﬂ·" },
+        { id: 2, name: "«·»Ì “«" },
+        { id: 3, name: "«·„ﬁ»·« " },
+        { id: 4, name: "«·„⁄ﬂ—Ê‰…" },
+        { id: 5, name: "«·„‘—Ê»« " },
+        { id: 6, name: "«·Õ·ÊÌ« " }
+    ],
+    products: [
+        {
+            id: 1,
+            name: "»Ì “« „Ì—« « «·Œ«’…",
+            description: "’·’… «·ÿ„«ÿ„° Ã»‰… „Ê“«—Ì·«° »Ì»—Ê‰Ì° ›ÿ—° ›·›· Õ·Ê",
+            price: 24.99,
+            category: "«·»Ì “«",
+            image: "https://images.unsplash.com/photo-1513104890138-7c749659a591",
+            available: true,
+            badge: "«·√ﬂÀ— „»Ì⁄«"
+        },
+        {
+            id: 2,
+            name: "”·ÿ… «·”Ì“—",
+            description: "Œ” —Ê„«‰Ì° ﬂ—Ê Ê‰« ° Ã»‰… »«—„Ì“«‰° ’·’… ”Ì“—",
+            price: 16.99,
+            category: "«·„ﬁ»·« ",
+            image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+            available: true
+        },
+        {
+            id: 3,
+            name: "»«” « √·›—ÌœÊ",
+            description: "„⁄ﬂ—Ê‰… ›Ì Ê ‘Ì‰Ì° ’·’… ﬂ—Ì„… √·›—ÌœÊ° ›ÿ—° Ã»‰… »«—„Ì“«‰",
+            price: 22.99,
+            category: "«·„⁄ﬂ—Ê‰…",
+            image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb",
+            available: true
+        },
+        {
+            id: 4,
+            name: "»Ì “« «·Œ÷«—",
+            description: "’·’… «·ÿ„«ÿ„° Ã»‰… „Ê“«—Ì·«° ›·›· Õ·Ê° »’·° “Ì Ê‰° ›ÿ—",
+            price: 21.99,
+            category: "«·»Ì “«",
+            image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+            available: true,
+            badge: "‰»« Ì"
+        },
+        {
+            id: 5,
+            name: "„‘—Ê» ·Ì„Ê‰ »«·‰⁄‰«⁄",
+            description: "·Ì„Ê‰ ÿ«“Ã° ‰⁄‰«⁄° ”ﬂ—° „«¡",
+            price: 8.99,
+            category: "«·„‘—Ê»« ",
+            image: "https://images.unsplash.com/photo-1511690656952-34342bb7c2f2",
+            available: true
+        },
+        {
+            id: 6,
+            name: " Ì—«„Ì”Ê",
+            description: "Õ·ÊÏ ≈Ìÿ«·Ì…  ﬁ·ÌœÌ… „‰ «·»”ﬂÊÌ ° «·ﬁÂÊ…° «·„«”ﬂ«—»Ê‰Ì",
+            price: 14.99,
+            category: "«·Õ·ÊÌ« ",
+            image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb",
+            available: true,
+            badge: "ÃœÌœ"
+        }
+    ]
+};
+
+// »Ì«‰«  ·ÊÕ… «· Õﬂ„
+const adminProducts = [
+    {
+        id: 1,
+        name: "»Ì “« „Ì—« « «·Œ«’…",
+        description: "’·’… «·ÿ„«ÿ„° Ã»‰… „Ê“«—Ì·«° »Ì»—Ê‰Ì° ›ÿ—° ›·›· Õ·Ê",
+        price: 24.99,
+        category: "«·»Ì “«",
+        image: "https://images.unsplash.com/photo-1513104890138-7c749659a591",
+        available: true,
+        sales: 128,
+        rating: 4.8
+    },
+    {
+        id: 2,
+        name: "”·ÿ… «·”Ì“—",
+        description: "Œ” —Ê„«‰Ì° ﬂ—Ê Ê‰« ° Ã»‰… »«—„Ì“«‰° ’·’… ”Ì“—",
+        price: 16.99,
+        category: "«·„ﬁ»·« ",
+        image: "https://images.unsplash.com/photo-1546069901-ba9599a7e63c",
+        available: true,
+        sales: 85,
+        rating: 4.5
+    },
+    {
+        id: 3,
+        name: "»«” « √·›—ÌœÊ",
+        description: "„⁄ﬂ—Ê‰… ›Ì Ê ‘Ì‰Ì° ’·’… ﬂ—Ì„… √·›—ÌœÊ° ›ÿ—° Ã»‰… »«—„Ì“«‰",
+        price: 22.99,
+        category: "«·„⁄ﬂ—Ê‰…",
+        image: "https://images.unsplash.com/photo-1555949258-eb67b1ef0ceb",
+        available: true,
+        sales: 92,
+        rating: 4.7
+    },
+    {
+        id: 4,
+        name: "»Ì “« «·Œ÷«—",
+        description: "’·’… «·ÿ„«ÿ„° Ã»‰… „Ê“«—Ì·«° ›·›· Õ·Ê° »’·° “Ì Ê‰° ›ÿ—",
+        price: 21.99,
+        category: "«·»Ì “«",
+        image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38",
+        available: false,
+        sales: 64,
+        rating: 4.3
+    }
+];
+
+// „’›Ê›… · Œ“Ì‰ ⁄‰«’— «·”·… (Ì „  Õ„Ì·Â« „‰ localStorage ≈‰ ÊÃœ )
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// ⁄—÷ Ê«ÃÂ… «·⁄„Ì· «› —«÷Ì«
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('clientView').style.display = 'block';
+    document.getElementById('adminView').style.display = 'none';
+    
+    renderClientMenu();
+    renderAdminProducts();
+    updateCartCount();
+    
+    // ›Ì «·Ê«ÃÂ… «·’€Ì—…° ⁄—÷ Ê«ÃÂ… «·⁄„Ì· ›ﬁÿ
+    if (window.innerWidth <= 768) {
+        document.getElementById('clientView').style.display = 'block';
+        document.getElementById('adminView').style.display = 'none';
+        document.querySelector('.view-switcher').style.display = 'none';
+    }
+});
+
+// ÊŸÌ›… «· »œÌ· ≈·Ï Ê«ÃÂ… «·⁄„Ì·
+function showClientView() {
+    document.getElementById('clientView').style.display = 'block';
+    document.getElementById('adminView').style.display = 'none';
+}
+
+// ÊŸÌ›… «· »œÌ· ≈·Ï ·ÊÕ… «· Õﬂ„
+function showAdminView() {
+    document.getElementById('clientView').style.display = 'none';
+    document.getElementById('adminView').style.display = 'block';
+}
+
+//  ÕœÌÀ ⁄œœ «·⁄‰«’— ›Ì ‘—Ìÿ «· ‰ﬁ· «·”›·Ì
+function updateCartCount() {
+    const cartNavItem = document.querySelector('.nav-item:nth-child(3)'); // «·”·… ›Ì «· ‰ﬁ· «·”›·Ì
+    const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
+    cartNavItem.innerHTML = `
+        <i class="fas fa-shopping-cart"></i>
+        <span>«·”·… ${cartCount > 0 ? `(${cartCount})` : ''}</span>
+    `;
+}
+
+// ⁄—÷ ﬁ«∆„… «·ÿ⁄«„ ›Ì Ê«ÃÂ… «·⁄„Ì·
+function renderClientMenu(filterCategory = "«·ﬂ·") {
+    const menuGrid = document.querySelector('.menu-grid');
+    menuGrid.innerHTML = '';
+    
+    const filteredProducts = filterCategory === "«·ﬂ·" 
+        ? menuData.products 
+        : menuData.products.filter(product => product.category === filterCategory);
+    
+    filteredProducts.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.className = 'product-card';
+        
+        let badgeHTML = '';
+        if (product.badge) {
+            badgeHTML = `<div class="product-badge">${product.badge}</div>`;
+        }
+        
+        productCard.innerHTML = `
+            ${badgeHTML}
+            <img src="${product.image}?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80" class="product-image">
+            <div class="product-info">
+                <div class="product-name">${product.name}</div>
+                <div class="product-desc">${product.description}</div>
+                <div class="product-price">
+                    ${product.price.toFixed(2)} —.”
+                    <button class="add-to-cart" data-id="${product.id}">
+                        <i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        menuGrid.appendChild(productCard);
+    });
+}
+
+// ⁄—÷ «·„‰ Ã«  ›Ì ·ÊÕ… «· Õﬂ„
+function renderAdminProducts() {
+    const tableBody = document.querySelector('.products-table tbody');
+    tableBody.innerHTML = '';
+    
+    adminProducts.forEach(product => {
+        const row = document.createElement('tr');
+        
+        row.innerHTML = `
+            <td><img src="${product.image}?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=80" class="product-thumb"></td>
+            <td>${product.name}</td>
+            <td>${product.description}</td>
+            <td>${product.price.toFixed(2)} —.”</td>
+            <td>${product.category}</td>
+            <td>
+                <label class="switch">
+                    <input type="checkbox" ${product.available ? 'checked' : ''}>
+                    <span class="slider"></span>
+                    <span class="status-text">${product.available ? '„ «Õ' : '€Ì— „ «Õ'}</span>
+                </label>
+            </td>
+            <td>
+                <button class="action-btn" title=" ⁄œÌ·" data-id="${product.id}"><i class="fas fa-edit"></i></button>
+                <button class="action-btn" title="Õ–›" data-id="${product.id}"><i class="fas fa-trash"></i></button>
+                <button class="action-btn" title="≈Õ’«∆Ì« "><i class="fas fa-chart-bar"></i></button>
+            </td>
+        `;
+        
+        tableBody.appendChild(row);
+    });
+}
+
+//  ÕœÌÀ ⁄—÷ «·”·… ›Ì «·‰«›–… «·„‰»Àﬁ… - „⁄ √“—«— «· ⁄œÌ· Ê«·≈“«·… (≈÷«›… ÃœÌœ…)
+function renderCartModal() {
+    const cartItemsDiv = document.getElementById('cartItems');
+    cartItemsDiv.innerHTML = '';
+    let total = 0;
+    cart.forEach(item => {
+        const product = menuData.products.find(p => p.id === item.productId);
+        if (product) {
+            const itemTotal = product.price * item.quantity;
+            const itemElement = document.createElement('div');
+            itemElement.style.cssText = 'border-bottom: 1px solid #eee; padding: 10px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px;';
+            itemElement.innerHTML = `
+                <span style="flex: 1; min-width: 100px;">${product.name}</span>
+                <div style="display: flex; align-items: center; gap: 10px; min-width: 120px;">
+                    <span>«·ﬂ„Ì…:</span>
+                    <button class="decrease-qty" data-id="${product.id}" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">-</button>
+                    <span>${item.quantity}</span>
+                    <button class="increase-qty" data-id="${product.id}" style="background: #27ae60; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">+</button>
+                </div>
+                <span style="min-width: 80px;">«·”⁄—: ${itemTotal.toFixed(2)} —.”</span>
+                <button class="remove-item" data-id="${product.id}" style="background: #e74c3c; color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer;">≈“«·…</button>
+            `;
+            cartItemsDiv.appendChild(itemElement);
+            total += itemTotal;
+        }
+    });
+    const totalElement = document.createElement('div');
+    totalElement.style.cssText = 'font-weight: bold; padding: 10px 0; text-align: right;';
+    totalElement.textContent = `«·≈Ã„«·Ì: ${total.toFixed(2)} —.”`;
+    cartItemsDiv.appendChild(totalElement);
+    document.getElementById('cartModal').style.display = 'block';
+}
+
+//  ›⁄Ì·/≈·€«¡  ›⁄Ì· «·√’‰«›
+document.addEventListener('click', function(e) {
+    if (e.target.matches('.switch input')) {
+        const statusText = e.target.parentElement.querySelector('.status-text');
+        if (e.target.checked) {
+            statusText.textContent = '„ «Õ';
+        } else {
+            statusText.textContent = '€Ì— „ «Õ';
+        }
+    }
+    if (e.target.closest('.add-to-cart')) {
+        const button = e.target.closest('.add-to-cart');
+        const productId = parseInt(button.getAttribute('data-id'));
+        const product = menuData.products.find(p => p.id === productId);
+        
+        if (product) {
+            const cartItem = cart.find(item => item.productId === productId);
+            if (cartItem) {
+                cartItem.quantity += 1;
+            } else {
+                cart.push({ productId, quantity: 1 });
+            }
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            const confirmation = document.createElement('div');
+            confirmation.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #27ae60; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+            confirmation.textContent = `${product.name}  „  ≈÷«› Â ≈·Ï «·”·…!`;
+            document.body.appendChild(confirmation);
+            setTimeout(() => confirmation.remove(), 2000);
+        }
+    }
+    if (e.target.closest('.action-btn') && e.target.classList.contains('fa-edit')) {
+        const button = e.target.closest('.action-btn');
+        const productId = parseInt(button.getAttribute('data-id'));
+        const product = adminProducts.find(p => p.id === productId);
+        
+        if (product) {
+            document.getElementById('modalTitle').textContent = ' ⁄œÌ· «·„‰ Ã';
+            document.getElementById('productName').value = product.name;
+            document.getElementById('productDesc').value = product.description;
+            document.getElementById('productPrice').value = product.price;
+            document.getElementById('productCategory').value = product.category;
+            document.getElementById('productImage').value = product.image;
+            document.getElementById('productAvailable').checked = product.available;
+            document.getElementById('productModal').style.display = 'block';
+            document.getElementById('productForm').dataset.id = productId;
+        }
+    }
+    if (e.target.closest('.action-btn') && e.target.classList.contains('fa-trash')) {
+        const button = e.target.closest('.action-btn');
+        const productId = parseInt(button.getAttribute('data-id'));
+        const productIndex = adminProducts.findIndex(p => p.id === productId);
+        
+        if (productIndex !== -1 && confirm('Â· √‰  „ √ﬂœ „‰ Õ–› Â–« «·„‰ Ãø')) {
+            adminProducts.splice(productIndex, 1);
+            const menuIndex = menuData.products.findIndex(p => p.id === productId);
+            if (menuIndex !== -1) {
+                menuData.products.splice(menuIndex, 1);
+            }
+            renderAdminProducts();
+            renderClientMenu();
+            const notification = document.createElement('div');
+            notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #e74c3c; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+            notification.textContent = ' „ Õ–› «·„‰ Ã »‰Ã«Õ!';
+            document.body.appendChild(notification);
+            setTimeout(() => notification.remove(), 2000);
+        }
+    }
+    // «· ⁄«„· „⁄ √“—«—  ⁄œÌ· «·ﬂ„Ì… Ê≈“«·… «·„‰ Ã«  (≈÷«›… ÃœÌœ…)
+    if (e.target.classList.contains('increase-qty')) {
+        const productId = parseInt(e.target.getAttribute('data-id'));
+        const cartItem = cart.find(item => item.productId === productId);
+        if (cartItem) {
+            cartItem.quantity += 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartModal();
+        }
+    }
+    if (e.target.classList.contains('decrease-qty')) {
+        const productId = parseInt(e.target.getAttribute('data-id'));
+        const cartItem = cart.find(item => item.productId === productId);
+        if (cartItem && cartItem.quantity > 1) {
+            cartItem.quantity -= 1;
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartModal();
+        } else if (cartItem && cartItem.quantity === 1) {
+            const index = cart.findIndex(item => item.productId === productId);
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            if (cart.length === 0) {
+                document.getElementById('cartModal').style.display = 'none';
+                const notification = document.createElement('div');
+                notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #e74c3c; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                notification.textContent = ' „ ≈“«·… «·„‰ Ã° «·”·… ›«—€… «·¬‰!';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 2000);
+            } else {
+                renderCartModal();
+            }
+        }
+    }
+    if (e.target.classList.contains('remove-item')) {
+        const productId = parseInt(e.target.getAttribute('data-id'));
+        const index = cart.findIndex(item => item.productId === productId);
+        if (index !== -1) {
+            cart.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            if (cart.length === 0) {
+                document.getElementById('cartModal').style.display = 'none';
+                const notification = document.createElement('div');
+                notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #e74c3c; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                notification.textContent = ' „ ≈“«·… «·„‰ Ã° «·”·… ›«—€… «·¬‰!';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 2000);
+            } else {
+                renderCartModal();
+            }
+        }
+    }
+});
+
+// «·ﬁÊ«∆„ «·„‰”œ·…
+document.querySelector('.language-btn').addEventListener('click', function() {
+    document.querySelector('.language-dropdown').style.display = 
+        document.querySelector('.language-dropdown').style.display === 'block' ? 'none' : 'block';
+});
+
+// ≈€·«ﬁ «·ﬁÊ«∆„ «·„‰”œ·… ⁄‰œ «·‰ﬁ— Œ«—ÃÂ«
+window.addEventListener('click', function(e) {
+    if (!e.target.matches('.language-btn')) {
+        const dropdowns = document.querySelectorAll('.language-dropdown');
+        dropdowns.forEach(dropdown => {
+            if (dropdown.style.display === 'block') {
+                dropdown.style.display = 'none';
+            }
+        });
+    }
+});
+
+//  »œÌ· ›∆«  «·ﬁ«∆„… ›Ì Ê«ÃÂ… «·⁄„Ì·
+document.querySelectorAll('.category-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const category = this.textContent;
+        renderClientMenu(category);
+    });
+});
+
+// «· ‰ﬁ· ›Ì «·ﬁ«∆„… «·”›·Ì… - „⁄ ⁄—÷ «·”·… ›Ì ‰«›–… „‰»Àﬁ…
+document.querySelectorAll('.nav-item').forEach(item => {
+    item.addEventListener('click', function() {
+        document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
+        this.classList.add('active');
+        
+        if (this.innerHTML.includes('fa-shopping-cart')) {
+            if (cart.length === 0) {
+                const notification = document.createElement('div');
+                notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #f39c12; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+                notification.textContent = '«·”·… ›«—€…!';
+                document.body.appendChild(notification);
+                setTimeout(() => notification.remove(), 2000);
+                return;
+            }
+            renderCartModal();
+        }
+    });
+});
+
+// ≈€·«ﬁ ‰«›–… «·”·…
+document.getElementById('closeCartModal').addEventListener('click', function() {
+    document.getElementById('cartModal').style.display = 'none';
+});
+
+// ≈›—«€ «·”·… (≈÷«›… ÃœÌœ…)
+document.getElementById('clearCart').addEventListener('click', function() {
+    if (confirm('Â· √‰  „ √ﬂœ „‰ ≈›—«€ «·”·…ø')) {
+        cart = [];
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCount();
+        document.getElementById('cartModal').style.display = 'none';
+        const notification = document.createElement('div');
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #e74c3c; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+        notification.textContent = ' „ ≈›—«€ «·”·…!';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 2000);
+    }
+});
+
+// ≈÷«›… „‰ Ã ÃœÌœ ⁄»— “— "≈÷«›… ’‰› ÃœÌœ"
+document.querySelector('.add-btn').addEventListener('click', function() {
+    document.getElementById('modalTitle').textContent = '≈÷«›… „‰ Ã ÃœÌœ';
+    document.getElementById('productForm').reset(); // ≈⁄«œ…  ⁄ÌÌ‰ «·‰„Ê–Ã
+    delete document.getElementById('productForm').dataset.id; // Õ–› ID ≈–« ﬂ«‰ „ÊÃÊœ«
+    document.getElementById('productModal').style.display = 'block';
+});
+
+// ≈€·«ﬁ ‰«›–… ≈÷«›…/ ⁄œÌ· «·„‰ Ã
+document.getElementById('closeModal').addEventListener('click', function() {
+    document.getElementById('productModal').style.display = 'none';
+});
+
+// Õ›Ÿ »Ì«‰«  «·„‰ Ã (≈÷«›… √Ê  ⁄œÌ·)
+document.getElementById('productForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const productId = this.dataset.id ? parseInt(this.dataset.id) : null;
+    const name = document.getElementById('productName').value;
+    const description = document.getElementById('productDesc').value;
+    const price = parseFloat(document.getElementById('productPrice').value);
+    const category = document.getElementById('productCategory').value;
+    const image = document.getElementById('productImage').value || 'https://via.placeholder.com/100?text=No+Image';
+    const available = document.getElementById('productAvailable').checked;
+    
+    if (name && description && !isNaN(price) && category) {
+        if (productId) {
+            //  ⁄œÌ· „‰ Ã „ÊÃÊœ
+            const product = adminProducts.find(p => p.id === productId);
+            if (product) {
+                product.name = name;
+                product.description = description;
+                product.price = price;
+                product.category = category;
+                product.image = image;
+                product.available = available;
+                const menuProduct = menuData.products.find(p => p.id === productId);
+                if (menuProduct) {
+                    Object.assign(menuProduct, product);
+                }
+            }
+        } else {
+            // ≈÷«›… „‰ Ã ÃœÌœ
+            const newProduct = {
+                id: adminProducts.length > 0 ? Math.max(...adminProducts.map(p => p.id)) + 1 : 1,
+                name,
+                description,
+                price,
+                category,
+                image,
+                available,
+                sales: 0,
+                rating: 0
+            };
+            adminProducts.push(newProduct);
+            if (!menuData.products.some(p => p.id === newProduct.id)) {
+                menuData.products.push({
+                    ...newProduct,
+                    badge: 'ÃœÌœ'
+                });
+            }
+        }
+        renderAdminProducts();
+        renderClientMenu();
+        document.getElementById('productModal').style.display = 'none';
+        const notification = document.createElement('div');
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #27ae60; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+        notification.textContent = productId ? ' „  ⁄œÌ· «·„‰ Ã »‰Ã«Õ!' : ' „ ≈÷«›… «·„‰ Ã »‰Ã«Õ!';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 2000);
+    }
+});
+
+// —»ÿ “— "ÿ·» ⁄»— Ê« ”«»" »„Õ ÊÌ«  «·”·…
+document.querySelector('.order-btn').addEventListener('click', function(e) {
+    e.preventDefault();
+    if (cart.length === 0) {
+        const notification = document.createElement('div');
+        notification.style.cssText = 'position: fixed; top: 20px; right: 20px; background: #f39c12; color: white; padding: 10px 20px; border-radius: 5px; z-index: 1000;';
+        notification.textContent = '«·”·… ›«—€…! Ì—ÃÏ ≈÷«›… „‰ Ã«  ﬁ»· «·ÿ·».';
+        document.body.appendChild(notification);
+        setTimeout(() => notification.remove(), 2000);
+        return;
+    }
+    
+    let orderMessage = 'ÿ·» ÃœÌœ „‰ „ÿ⁄„ Merata:\n';
+    let total = 0;
+    cart.forEach(item => {
+        const product = menuData.products.find(p => p.id === item.productId);
+        if (product) {
+            const itemTotal = product.price * item.quantity;
+            orderMessage += `${product.name} - «·ﬂ„Ì…: ${item.quantity} - «·”⁄—: ${itemTotal.toFixed(2)} —.”\n`;
+            total += itemTotal;
+        }
+    });
+    orderMessage += `«·≈Ã„«·Ì: ${total.toFixed(2)} —.”`;
+    const encodedMessage = encodeURIComponent(orderMessage);
+    const whatsappUrl = `https://wa.me/9665008813919?text=${encodedMessage}`;
+    window.open(whatsappUrl, '_blank');
+});
+
+//  ⁄œÌ·«  ··‘«‘«  «·ﬂ»Ì—…
+function handleResize() {
+    if (window.innerWidth > 768) {
+        document.querySelector('.main-content').style.marginRight = '280px';
+    } else {
+        document.querySelector('.main-content').style.marginRight = '0';
+    }
+}
+
+window.addEventListener('resize', handleResize);
+handleResize();
