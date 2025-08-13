@@ -295,107 +295,14 @@ function getItemRating(itemName) {
 
 // Add advanced search
 function addAdvancedSearch() {
-    const searchContainer = document.querySelector('.search-container');
-    if (!searchContainer) return;
-
-    // Add search filters
-    const filtersDiv = document.createElement('div');
-    filtersDiv.className = 'search-filters';
-    filtersDiv.innerHTML = `
-        <div class="filter-group">
-            <label>السعر:</label>
-            <select id="price-filter">
-                <option value="">جميع الأسعار</option>
-                <option value="0-20">أقل من 20 ريال</option>
-                <option value="20-40">20-40 ريال</option>
-                <option value="40-60">40-60 ريال</option>
-                <option value="60+">أكثر من 60 ريال</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>التقييم:</label>
-            <select id="rating-filter">
-                <option value="">جميع التقييمات</option>
-                <option value="4+">4 نجوم فأكثر</option>
-                <option value="3+">3 نجوم فأكثر</option>
-                <option value="2+">2 نجوم فأكثر</option>
-            </select>
-        </div>
-        <div class="filter-group">
-            <label>الترتيب:</label>
-            <select id="sort-filter">
-                <option value="">الترتيب الافتراضي</option>
-                <option value="price-asc">السعر: من الأقل للأعلى</option>
-                <option value="price-desc">السعر: من الأعلى للأقل</option>
-                <option value="rating-desc">التقييم: الأعلى أولاً</option>
-                <option value="name-asc">الاسم: أ-ي</option>
-            </select>
-        </div>
-    `;
-
-    const style = document.createElement('style');
-    style.textContent = `
-        .search-filters {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin: 20px 0;
-            padding: 20px;
-            background: var(--surface-color);
-            border-radius: 15px;
-            box-shadow: var(--shadow-light);
-        }
-
-        .filter-group {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-        }
-
-        .filter-group label {
-            font-weight: 600;
-            color: var(--text-color);
-            font-size: 0.9rem;
-        }
-
-        .filter-group select {
-            padding: 8px 12px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            background: white;
-            color: var(--text-color);
-            font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
-        }
-
-        .filter-group select:focus {
-            outline: none;
-            border-color: var(--primary-color);
-        }
-
-        @media (max-width: 768px) {
-            .search-filters {
-                flex-direction: column;
-            }
-            
-            .filter-group {
-                width: 100%;
-            }
-        }
-    `;
-    document.head.appendChild(style);
-
-    searchContainer.appendChild(filtersDiv);
-
-    // Add event listeners for filters
-    document.getElementById('price-filter').addEventListener('change', applyFilters);
-    document.getElementById('rating-filter').addEventListener('change', applyFilters);
-    document.getElementById('sort-filter').addEventListener('change', applyFilters);
+    // Advanced search functionality is now integrated into the main search
+    // No additional filters needed as per user request
 }
 
 // Apply search filters
 function applyFilters() {
-    renderMenu(); // This will be enhanced to include filtering
+    // Filters removed as per user request
+    // Search functionality is handled by the main search function
 }
 
 // Add order history

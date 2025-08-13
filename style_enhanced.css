@@ -1206,3 +1206,162 @@ body::before {
     }
 }
 
+
+/* Payment Methods Section in Cart */
+.payment-methods-section {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 2px solid var(--border-color);
+}
+
+.payment-methods-section h3 {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.payment-methods-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.payment-method-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 8px;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--surface-color);
+    color: var(--text-color);
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.payment-method-btn:hover {
+    border-color: var(--primary-color);
+    background: var(--primary-color);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-medium);
+}
+
+.payment-method-btn svg {
+    flex-shrink: 0;
+}
+
+.whatsapp-payment:hover {
+    background: #25D366;
+    border-color: #25D366;
+}
+
+.cash-payment:hover {
+    background: #2ECC71;
+    border-color: #2ECC71;
+}
+
+.card-payment-section {
+    margin-top: 15px;
+}
+
+.card-payment-section h4 {
+    color: var(--text-color);
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.card-payment-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+}
+
+.card-btn {
+    padding: 8px 6px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-size: 0.75rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-light);
+}
+
+.mada-btn {
+    background: #007B4A;
+    color: white;
+    border-color: #007B4A;
+}
+
+.mada-btn:hover {
+    background: #005A36;
+}
+
+.visa-btn {
+    background: #1E479B;
+    color: white;
+    border-color: #1E479B;
+}
+
+.visa-btn:hover {
+    background: #163A7A;
+}
+
+.mastercard-btn {
+    background: #EB001B;
+    color: white;
+    border-color: #EB001B;
+}
+
+.mastercard-btn:hover {
+    background: #C20015;
+}
+
+.applepay-btn {
+    background: #000000;
+    color: white;
+    border-color: #000000;
+}
+
+.applepay-btn:hover {
+    background: #333333;
+}
+
+@media (max-width: 480px) {
+    .payment-methods-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card-payment-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .payment-method-btn {
+        font-size: 0.8rem;
+        padding: 10px 6px;
+    }
+    
+    .card-btn {
+        font-size: 0.7rem;
+        padding: 6px 4px;
+    }
+}
+

@@ -485,7 +485,7 @@ function updateCartDisplay() {
     const cartCountSpan = document.getElementById('cart-count');
     const emptyCartDiv = document.querySelector('.empty-cart');
     const cartTotalDiv = document.getElementById('cart-total');
-    const checkoutBtn = document.getElementById('checkout-btn');
+    const paymentMethodsSection = document.getElementById('payment-methods-section');
     const clearCartBtn = document.getElementById('clear-cart-btn');
     const totalAmountSpan = document.getElementById('total-amount');
 
@@ -494,12 +494,12 @@ function updateCartDisplay() {
     if (cart.length === 0) {
         if (emptyCartDiv) emptyCartDiv.style.display = 'block';
         if (cartTotalDiv) cartTotalDiv.style.display = 'none';
-        if (checkoutBtn) checkoutBtn.style.display = 'none';
+        if (paymentMethodsSection) paymentMethodsSection.style.display = 'none';
         if (clearCartBtn) clearCartBtn.style.display = 'none';
     } else {
         if (emptyCartDiv) emptyCartDiv.style.display = 'none';
         if (cartTotalDiv) cartTotalDiv.style.display = 'flex';
-        if (checkoutBtn) checkoutBtn.style.display = 'block';
+        if (paymentMethodsSection) paymentMethodsSection.style.display = 'block';
         if (clearCartBtn) clearCartBtn.style.display = 'block';
 
         let total = 0;
@@ -612,21 +612,8 @@ function confirmClearCart() {
     showSuccessMessage();
 }
 
-// Complete order function
-function completeOrder() {
-    if (cart.length === 0) {
-        alert(translations[currentLang].emptyCart);
-        return;
-    }
-    
-    // Show payment options from payment integration
-    if (typeof showPaymentOptions === 'function') {
-        showPaymentOptions();
-    } else {
-        // Fallback to WhatsApp if payment integration is not available
-        openWhatsAppInquiry();
-    }
-}
+// Complete order function - No longer needed as payment methods are integrated in cart
+// Payment methods are now directly accessible in the cart modal
 
 // Enhanced error handling for images
 function handleImageError(img) {
