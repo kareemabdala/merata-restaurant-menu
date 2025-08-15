@@ -226,6 +226,30 @@ function formatOrderForWhatsApp() {
 
 // Clear cart and close modal
 function clearCartAndCloseModal() {
+    // Show professional confirmation dialog
+    const confirmDialog = document.createElement('div');
+    confirmDialog.className = 'confirm-dialog-overlay';
+    confirmDialog.innerHTML = `
+        <div class="confirm-dialog">
+            <div class="confirm-dialog-header">
+                <h3>تأكيد العملية</h3>
+            </div>
+            <div class="confirm-dialog-body">
+                <p>هل أنت متأكد من إتمام الطلب وإفراغ السلة؟</p>
+                <p class="confirm-note">سيتم حذف جميع العناصر من السلة نهائياً</p>
+            </div>
+            <div class="confirm-dialog-actions">
+                <button class="confirm-btn-yes" onclick="confirmClearCart()">نعم، متأكد</button>
+                <button class="confirm-btn-no" onclick="cancelClearCart()">إلغاء</button>
+            </div>
+        </div>
+    `;
+    
+    document.body.appendChild(confirmDialog);
+}
+
+// Confirm clear cart
+function confirmClearCart() {
     // Clear cart
     cart = [];
     localStorage.removeItem('cart');
@@ -236,6 +260,20 @@ function clearCartAndCloseModal() {
     
     // Close cart modal
     closeCart();
+    
+    // Remove confirmation dialog
+    const confirmDialog = document.querySelector('.confirm-dialog-overlay');
+    if (confirmDialog) {
+        confirmDialog.remove();
+    }
+}
+
+// Cancel clear cart
+function cancelClearCart() {
+    const confirmDialog = document.querySelector('.confirm-dialog-overlay');
+    if (confirmDialog) {
+        confirmDialog.remove();
+    }
 }
 
 // Show payment options modal
